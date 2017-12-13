@@ -1,0 +1,12 @@
+version '3'
+
+services:
+  vizualizer:
+    image: dockersamples/visualizer
+    volumes:
+      - src=/var/run/docker.sock
+      - dst=/var/run/docker.sock
+    ports:
+      - "8080:8080"
+    constraint:
+      - 'node.role == manager'
