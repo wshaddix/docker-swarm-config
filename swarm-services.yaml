@@ -14,3 +14,16 @@ services:
       placement:
         constraints:
           - node.role == manager
+  sematext:
+    image: sematext/sematext-agent-docker
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+      - type: bind
+        source: /
+        target: /rootfs,ro
+    deploy:
+      mode: global
+    environment:
+      - SPM_TOKEN=82c4340d-febc-4941-81f7-e74f5a5eedb9
