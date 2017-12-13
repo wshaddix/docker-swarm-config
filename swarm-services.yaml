@@ -8,5 +8,7 @@ services:
       - dst=/var/run/docker.sock
     ports:
       - "8080:8080"
-    constraint:
-      - 'node.role == manager'
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
