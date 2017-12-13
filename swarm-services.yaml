@@ -4,8 +4,12 @@ services:
   vizualizer:
     image: dockersamples/visualizer
     volumes:
-      - src=/var/run/docker.sock
-      - dst=/var/run/docker.sock
+      - type: bind
+        source: src
+        target: /var/run/docker.sock
+      - type: bind
+        source: dst
+        target: /var/run/docker.sock
     ports:
       - "8080:8080/tcp"
     deploy:
@@ -13,4 +17,3 @@ services:
       placement:
         constraints:
           - node.role == manager
-          
