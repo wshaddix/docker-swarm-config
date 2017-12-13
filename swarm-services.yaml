@@ -9,7 +9,8 @@ services:
     ports:
       - "8080:8080/tcp"
     deploy:
+      replicas: 1      
       placement:
-        replicas: 1
         constraints:
           - node.role == manager
+          
