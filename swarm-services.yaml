@@ -22,8 +22,12 @@ services:
         target: /var/run/docker.sock
       - type: bind
         source: /
-        target: /rootfs,ro
+        target: /rootfs:ro
+      - type: bind
+        source: /etc/localtime
+        target: /etc/localtime:ro
     deploy:
       mode: global
     environment:
       - SPM_TOKEN=82c4340d-febc-4941-81f7-e74f5a5eedb9
+      - LOGSENE_TOKEN=16149055-8e94-4a8d-be80-a68962c60730
